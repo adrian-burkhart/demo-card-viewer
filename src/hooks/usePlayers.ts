@@ -11,13 +11,14 @@ const PlayerSchema = z.object({
 
 export type Player = z.infer<typeof PlayerSchema>
 
-export type PlayerState = 'loading' | 'errored' | 'success' | undefined
+export type LoadingState = 'loading' | 'errored' | 'success' | undefined
 
 /**
  * A custom hook that fetches players from the API.
  */
 export const usePlayers = () => {
-  const [playersState, setPlayersState] = React.useState<PlayerState>(undefined)
+  const [loadingState, setLoadingState] =
+    React.useState<LoadingState>(undefined)
 
   const [players, setPlayers] = React.useState<Player[]>([])
 
@@ -29,7 +30,7 @@ export const usePlayers = () => {
   }
 
   React.useEffect(() => {
-    setPlayersState('loading')
+    setLoadingState('loading')
     fetch(API_URL)
       .then(handleErrors)
       .then(res => {
@@ -38,12 +39,12 @@ export const usePlayers = () => {
       .then(data => {
         const parsedData = z.array(PlayerSchema).parse(data)
         setPlayers(parsedData)
-        setPlayersState('success')
+        setLoadingState('success')
       })
       .catch(e => {
-        setPlayersState('errored')
+        setLoadingState('errored')
       })
   }, [])
 
-  return { playersState, players }
+  return { loadingState, players }
 }
