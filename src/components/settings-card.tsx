@@ -7,19 +7,21 @@ interface SettingsCardProps {
 
 export const SettingsCard = ({ loadingState }: SettingsCardProps) => {
   return (
-    <Card big>
+    <div className='flex flex-col'>
       <Heading level={2}>Controls</Heading>
-      <div className='grid grid-cols-2 gap-2 my-4 '>
-        <div>
-          <Button inactive={loadingState !== 'success'} label='Sort Asc' />
+      <Card big>
+        <div className='grid grid-cols-2 gap-2 my-4 '>
+          <div>
+            <Button inactive={loadingState !== 'success'} label='Sort Asc' />
+          </div>
+          <div>
+            <Button inactive={loadingState !== 'success'} label='Sort Desc' />
+          </div>
+          <div className='col-span-2'>
+            <Button inactive={loadingState !== 'success'} label='Submit' />
+          </div>
         </div>
-        <div>
-          <Button inactive={loadingState !== 'success'} label='Sort Desc' />
-        </div>
-        <div className='col-span-2'>
-          <Button inactive={loadingState !== 'success'} label='Submit' />
-        </div>
-      </div>
-    </Card>
+      </Card>
+    </div>
   )
 }

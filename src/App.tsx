@@ -14,7 +14,7 @@ export const App = () => {
   return (
     <main>
       <Heading level={1}>Demo Card Viewer</Heading>
-      <div className='grid grid-cols-2 gap-6'>
+      <div className='grid grid-cols-2 gap-6 my-20'>
         <DetailView player={activePlayer} />
         <SettingsCard loadingState={loadingState} />
         <PlayerOverview
