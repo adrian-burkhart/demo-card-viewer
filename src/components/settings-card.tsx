@@ -1,14 +1,18 @@
-import { LoadingState } from '../hooks'
+import { LoadingState, Player } from '../hooks'
 import { Button, Heading, Card, Text } from '../ui'
 
 interface SettingsCardProps {
+  activePlayer: Player | undefined
   loadingState: LoadingState
   handleClick: (method: 'asc' | 'desc') => void
+  handleSubmit: () => void
 }
 
 export const SettingsCard = ({
+  activePlayer,
   loadingState,
   handleClick,
+  handleSubmit,
 }: SettingsCardProps) => {
   return (
     <div className='flex flex-col'>
@@ -30,7 +34,11 @@ export const SettingsCard = ({
             />
           </div>
           <div className='col-span-2'>
-            <Button inactive={loadingState !== 'success'} label='Submit' />
+            <Button
+              inactive={loadingState !== 'success' || !activePlayer}
+              label='Submit'
+              onClick={handleSubmit}
+            />
           </div>
         </div>
       </Card>

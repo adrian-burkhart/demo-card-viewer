@@ -1,5 +1,5 @@
 import './App.css'
-import { Player, usePlayers } from './hooks'
+import { Player, submitPlayer, usePlayers } from './hooks'
 import { DetailView, PlayerOverview, SettingsCard } from './components'
 import { Heading } from './ui'
 import React from 'react'
@@ -42,9 +42,9 @@ export const App = () => {
     (direction: 'asc' | 'desc') => {
       const sortedPlayers = [...players].sort((a, b) => {
         if (direction === 'asc') {
-          return a.playerName.localeCompare(b.realName)
+          return a.realName.localeCompare(b.realName)
         } else {
-          return b.playerName.localeCompare(a.realName)
+          return b.realName.localeCompare(a.realName)
         }
       })
       setSortedPlayers(sortedPlayers)
@@ -52,12 +52,23 @@ export const App = () => {
     [players]
   )
 
+  const handleSubmit = React.useCallback(() => {
+    if (activePlayer) {
+      submitPlayer(activePlayer)
+    }
+  }, [activePlayer])
+
   return (
     <main>
       <Heading level={1}>Demo Card Viewer</Heading>
       <div className='grid grid-cols-2 gap-6 my-20'>
         <DetailView player={activePlayer} />
-        <SettingsCard loadingState={loadingState} handleClick={handleClick} />
+        <SettingsCard
+          activePlayer={activePlayer}
+          loadingState={loadingState}
+          handleClick={handleClick}
+          handleSubmit={handleSubmit}
+        />
         <PlayerOverview
           players={sortedPlayers}
           loadingState={loadingState}

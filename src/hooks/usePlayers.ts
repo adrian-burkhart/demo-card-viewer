@@ -51,3 +51,14 @@ export const usePlayers = () => {
 
   return { loadingState, players }
 }
+
+export const submitPlayer = (player: Player) => {
+  fetch('', {
+    // TODO: Add your API URL here
+    method: 'POST',
+    body: JSON.stringify(PlayerSchema.parse(player)),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+}
