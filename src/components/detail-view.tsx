@@ -11,11 +11,13 @@ export const DetailView = ({ player }: DetailViewProps) => {
       <Heading level={2}>Details</Heading>
       {player ? (
         <Card big>
-          <Text truncate={false}>
-            <Text>Real Name: {player.realName}</Text>
-            <Text>Player Name: {player.playerName}</Text>
-            <Text>Asset: {player.asset}</Text>
+          <Text color={'text-primary'}>
+            {player.firstNames.includes(' ') ? 'First Names: ' : 'First Name: '}
+            {player.firstNames}
           </Text>
+          <Text color={'text-primary'}>Last Name: {player.lastName}</Text>
+          <Text color={'text-primary'}>Player Name: {player.playerName}</Text>
+          <Text color={'text-primary'}>Asset: {player.asset}</Text>
         </Card>
       ) : (
         <Text>Click a player card to inspect.</Text>

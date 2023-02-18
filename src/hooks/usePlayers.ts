@@ -10,7 +10,12 @@ const PlayerSchema = z.object({
   asset: z.string(),
 })
 
-export type Player = z.infer<typeof PlayerSchema>
+type UnformattedPlayer = z.infer<typeof PlayerSchema>
+
+export type Player = Omit<UnformattedPlayer, 'realName'> & {
+  firstNames: string
+  lastName: string
+}
 
 export type LoadingState = 'loading' | 'errored' | 'success' | undefined
 
@@ -30,6 +35,16 @@ export const usePlayers = () => {
     return response
   }
 
+  const formatPlayers = (players: UnformattedPlayer[]) =>
+    players.map(player => {
+      return {
+        firstNames: player.realName.split(' ').slice(0, -1).join(' '),
+        lastName: player.realName.split(' ').slice(-1).join(' '),
+        playerName: player.playerName,
+        asset: player.asset,
+      }
+    })
+
   React.useEffect(() => {
     setLoadingState('loading')
     fetch(API_URL)
@@ -40,7 +55,8 @@ export const usePlayers = () => {
       .then(data => {
         const parsedData = z.array(PlayerSchema).parse(data)
         return setTimeout(() => {
-          setPlayers(parsedData)
+          const formattedPlayers = formatPlayers(parsedData)
+          setPlayers(formattedPlayers)
           setLoadingState('success')
         }, 0) // Use this to simulate a slow network to test the loading state
       })
@@ -53,10 +69,16 @@ export const usePlayers = () => {
 }
 
 export const submitPlayer = (player: Player) => {
+  const unformattedPlayer = {
+    realName: `${player.firstNames} ${player.lastName}`,
+    playerName: player.playerName,
+    asset: player.asset,
+  }
+
   fetch('', {
     // TODO: Add your API URL here
     method: 'POST',
-    body: JSON.stringify(PlayerSchema.parse(player)),
+    body: JSON.stringify(PlayerSchema.parse(unformattedPlayer)),
     headers: {
       'Content-Type': 'application/json',
     },

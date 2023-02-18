@@ -1,14 +1,14 @@
 import './App.css'
 import { Player, submitPlayer, usePlayers } from './hooks'
 import { DetailView, PlayerOverview, SettingsCard } from './components'
-import { Heading } from './ui'
+import { Grid, Heading } from './ui'
 import React from 'react'
 
 export const App = () => {
   const { loadingState, players } = usePlayers()
 
   const [activePlayer, setActivePlayer] = React.useState<Player | undefined>(
-    players[0]
+    undefined
   )
 
   const [sortedPlayers, setSortedPlayers] = React.useState<Player[]>([])
@@ -42,9 +42,9 @@ export const App = () => {
     (direction: 'asc' | 'desc') => {
       const sortedPlayers = [...players].sort((a, b) => {
         if (direction === 'asc') {
-          return a.realName.localeCompare(b.realName)
+          return a.lastName.localeCompare(b.lastName)
         } else {
-          return b.realName.localeCompare(a.realName)
+          return b.lastName.localeCompare(a.lastName)
         }
       })
       setSortedPlayers(sortedPlayers)
@@ -61,7 +61,7 @@ export const App = () => {
   return (
     <main>
       <Heading level={1}>Demo Card Viewer</Heading>
-      <div className='grid grid-cols-2 gap-6 my-20'>
+      <Grid columns={2}>
         <DetailView player={activePlayer} />
         <SettingsCard
           activePlayer={activePlayer}
@@ -75,7 +75,7 @@ export const App = () => {
           setActivePlayer={setActivePlayer}
           activePlayer={activePlayer}
         />
-      </div>
+      </Grid>
     </main>
   )
 }

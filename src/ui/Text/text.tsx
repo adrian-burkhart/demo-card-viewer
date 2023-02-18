@@ -10,7 +10,7 @@ export const Text = ({ children, color, truncate }: TextProps) => {
   return (
     <p
       className={classNames(
-        'text-left p-1 text-xl ',
+        'text-left p-1 text-lg ',
         color ?? 'text-tertiary',
         truncate && 'truncate'
       )}

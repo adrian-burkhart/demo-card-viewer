@@ -22,7 +22,7 @@ export const PlayerOverview = ({
   return (
     <div className='flex flex-col col-span-2'>
       <Heading level={2}>Overview</Heading>
-      <Grid>
+      <Grid columns={3}>
         {loadingState === 'loading' && (
           <div className='animate-pulse'>
             <Text>Loading players...</Text>
@@ -44,7 +44,7 @@ export const PlayerOverview = ({
               truncate
               color={activePlayer === player ? 'text-primary' : 'text-tertiary'}
             >
-              {player.realName}
+              {player.firstNames} {player.lastName}
             </Text>
             <Text
               truncate
