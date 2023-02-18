@@ -14,12 +14,12 @@ export const App = () => {
   return (
     <main>
       <Heading level={1}>Demo Card Viewer</Heading>
-      {loadingState === 'loading' && <p>Loading...</p>}
       <div className='grid grid-cols-2 gap-6'>
         <DetailView player={activePlayer} />
-        <SettingsCard />
+        <SettingsCard loadingState={loadingState} />
         <PlayerOverview
           players={players}
+          loadingState={loadingState}
           setActivePlayer={setActivePlayer}
           activePlayer={activePlayer}
         />

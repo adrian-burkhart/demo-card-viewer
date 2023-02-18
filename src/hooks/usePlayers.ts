@@ -3,6 +3,7 @@ import { z } from 'zod'
 
 const API_URL = 'https://opensource.aoe.com/the-card-game-data/player.json'
 
+// We use zod to validate the data we get from the API.
 const PlayerSchema = z.object({
   realName: z.string(),
   playerName: z.string(),
@@ -38,8 +39,10 @@ export const usePlayers = () => {
       })
       .then(data => {
         const parsedData = z.array(PlayerSchema).parse(data)
-        setPlayers(parsedData)
-        setLoadingState('success')
+        return setTimeout(() => {
+          setPlayers(parsedData)
+          setLoadingState('success')
+        }, 0) // Use this to simulate a slow network to test the loading state
       })
       .catch(e => {
         setLoadingState('errored')

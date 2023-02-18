@@ -2,16 +2,16 @@ import classNames from 'classnames'
 
 interface CardProps {
   big?: boolean
-  clickable?: boolean
   children?: React.ReactNode
+  clickable?: boolean
   highlighted?: boolean
   onClick?: () => void
 }
 
 export const Card = ({
   big,
-  clickable,
   children,
+  clickable,
   highlighted,
   onClick,
 }: CardProps) => {

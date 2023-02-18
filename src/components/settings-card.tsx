@@ -1,20 +1,23 @@
+import { LoadingState } from '../hooks'
 import { Button, Heading, Card } from '../ui'
 
-interface SettingsCardProps {}
+interface SettingsCardProps {
+  loadingState: LoadingState
+}
 
-export const SettingsCard = () => {
+export const SettingsCard = ({ loadingState }: SettingsCardProps) => {
   return (
     <Card big>
       <Heading level={2}>Controls</Heading>
       <div className='grid grid-cols-2 gap-2 my-4 '>
         <div>
-          <Button label='Sort Asc' />
+          <Button inactive={loadingState !== 'success'} label='Sort Asc' />
         </div>
         <div>
-          <Button label='Sort Desc' />
+          <Button inactive={loadingState !== 'success'} label='Sort Desc' />
         </div>
         <div className='col-span-2'>
-          <Button label='Submit' />
+          <Button inactive={loadingState !== 'success'} label='Submit' />
         </div>
       </div>
     </Card>

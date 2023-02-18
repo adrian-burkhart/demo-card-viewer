@@ -1,15 +1,17 @@
 import { Dispatch, SetStateAction } from 'react'
-import { Player } from '../hooks'
+import { LoadingState, Player } from '../hooks'
 import { Grid, Heading, Card, Text } from '../ui'
 
 interface PlayerOverviewProps {
   activePlayer: Player | undefined
+  loadingState: LoadingState
   setActivePlayer: Dispatch<SetStateAction<Player | undefined>>
   players: Player[]
 }
 
 export const PlayerOverview = ({
   activePlayer,
+  loadingState,
   players,
   setActivePlayer,
 }: PlayerOverviewProps) => {
@@ -21,6 +23,16 @@ export const PlayerOverview = ({
     <div className='flex flex-col col-span-2'>
       <Heading level={2}>Overview</Heading>
       <Grid>
+        {loadingState === 'loading' && (
+          <div className='animate-pulse'>
+            <Text>Loading players...</Text>
+          </div>
+        )}
+        {loadingState === 'errored' && (
+          <div className='animate-pulse'>
+            <Text>Error loading players...</Text>
+          </div>
+        )}
         {players.map((player, idX) => (
           <Card
             clickable
