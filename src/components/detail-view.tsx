@@ -7,7 +7,7 @@ interface DetailViewProps {
 
 export const DetailView = ({ player }: DetailViewProps) => {
   return (
-    <div className='flex flex-col'>
+    <section className='flex flex-col'>
       <Heading level={2}>Details</Heading>
       {player ? (
         <Card big>
@@ -22,6 +22,6 @@ export const DetailView = ({ player }: DetailViewProps) => {
       ) : (
         <Text>Click a player card to inspect.</Text>
       )}
-    </div>
+    </section>
   )
 }

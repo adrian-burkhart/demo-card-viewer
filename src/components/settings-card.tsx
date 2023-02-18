@@ -15,7 +15,7 @@ export const SettingsCard = ({
   handleSubmit,
 }: SettingsCardProps) => {
   return (
-    <div className='flex flex-col'>
+    <aside className='flex flex-col'>
       <Heading level={2}>Controls</Heading>
       <Card big>
         <div className='grid grid-cols-2 gap-2 my-4 '>
@@ -42,6 +42,6 @@ export const SettingsCard = ({
           </div>
         </div>
       </Card>
-    </div>
+    </aside>
   )
 }

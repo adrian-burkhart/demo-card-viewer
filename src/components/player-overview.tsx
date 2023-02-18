@@ -20,7 +20,7 @@ export const PlayerOverview = ({
   }
 
   return (
-    <div className='flex flex-col col-span-2'>
+    <section className='flex flex-col col-span-2'>
       <Heading level={2}>Overview</Heading>
       <Grid columns={3}>
         {loadingState === 'loading' && (
@@ -61,6 +61,6 @@ export const PlayerOverview = ({
           </Card>
         ))}
       </Grid>
-    </div>
+    </section>
   )
 }
