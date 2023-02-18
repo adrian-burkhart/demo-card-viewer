@@ -1,16 +1,29 @@
 import './App.css'
-import { usePlayers } from './hooks'
-import { PlayerOverview } from './components'
+import { Player, usePlayers } from './hooks'
+import { DetailView, PlayerOverview, SettingsCard } from './components'
 import { Heading } from './ui'
+import React from 'react'
 
 export const App = () => {
   const { loadingState, players } = usePlayers()
 
+  const [activePlayer, setActivePlayer] = React.useState<Player | undefined>(
+    players[0]
+  )
+
   return (
     <main>
-      <Heading>Demo Card Viewer</Heading>
+      <Heading level={1}>Demo Card Viewer</Heading>
       {loadingState === 'loading' && <p>Loading...</p>}
-      <PlayerOverview players={players} />
+      <div className='grid grid-cols-2 gap-6'>
+        <DetailView player={activePlayer} />
+        <SettingsCard />
+        <PlayerOverview
+          players={players}
+          setActivePlayer={setActivePlayer}
+          activePlayer={activePlayer}
+        />
+      </div>
     </main>
   )
 }

@@ -1,4 +1,6 @@
 export * from './Heading'
-export * from './SmallCards'
+export * from './SmallCard'
+export * from './BigCard'
 export * from './Grid'
 export * from './Text'
+export * from './Button'
