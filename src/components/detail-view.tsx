@@ -1,5 +1,5 @@
 import { Player } from '../hooks'
-import { BigCard, Heading, Text } from '../ui'
+import { Heading, Card, Text } from '../ui'
 
 interface DetailViewProps {
   player?: Player
@@ -7,7 +7,7 @@ interface DetailViewProps {
 
 export const DetailView = ({ player }: DetailViewProps) => {
   return (
-    <BigCard>
+    <Card big>
       <Heading level={2}>Details</Heading>
       {player ? (
         <Text truncate={false}>
@@ -18,6 +18,6 @@ export const DetailView = ({ player }: DetailViewProps) => {
       ) : (
         <Text>Click a player card to inspect.</Text>
       )}
-    </BigCard>
+    </Card>
   )
 }

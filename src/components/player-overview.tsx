@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 import { Player } from '../hooks'
-import { Grid, Heading, SmallCard, Text } from '../ui'
+import { Grid, Heading, Card, Text } from '../ui'
 
 interface PlayerOverviewProps {
   activePlayer: Player | undefined
@@ -22,7 +22,8 @@ export const PlayerOverview = ({
       <Heading level={2}>Overview</Heading>
       <Grid>
         {players.map((player, idX) => (
-          <SmallCard
+          <Card
+            clickable
             highlighted={activePlayer === player}
             key={idX}
             onClick={() => handleClick(player)}
@@ -45,7 +46,7 @@ export const PlayerOverview = ({
             >
               {player.asset}
             </Text>
-          </SmallCard>
+          </Card>
         ))}
       </Grid>
     </div>
