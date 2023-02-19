@@ -1,12 +1,12 @@
 import classNames from 'classnames'
 
 interface ButtonProps {
-  label?: string
   inactive?: boolean
+  label?: string
   onClick?: () => void
 }
 
-export const Button = ({ label, inactive, onClick }: ButtonProps) => {
+export const Button = ({ inactive, label, onClick }: ButtonProps) => {
   return (
     <button
       className={classNames(

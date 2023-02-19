@@ -1,12 +1,13 @@
 import { Dispatch, SetStateAction } from 'react'
+
 import { LoadingState, Player } from '../hooks'
 import { Grid, Heading, Card, Text } from '../ui'
 
 interface PlayerOverviewProps {
   activePlayer: Player | undefined
   loadingState: LoadingState
-  setActivePlayer: Dispatch<SetStateAction<Player | undefined>>
   players: Player[]
+  setActivePlayer: Dispatch<SetStateAction<Player | undefined>>
 }
 
 export const PlayerOverview = ({

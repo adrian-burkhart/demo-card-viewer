@@ -1,11 +1,14 @@
-import './App.css'
-import { Player, submitPlayer, usePlayers } from './hooks'
-import { DetailView, PlayerOverview, SettingsCard } from './components'
-import { Grid, Heading } from './ui'
 import React from 'react'
+
+import './App.css'
+import { DetailView, PlayerOverview, SettingsCard } from './components'
+import { Player, submitPlayer, usePlayers } from './hooks'
+import { Grid, Heading } from './ui'
 
 export const App = () => {
   const { loadingState, players } = usePlayers()
+
+  const [cardBouncing, setCardBouncing] = React.useState(false)
 
   const [activePlayer, setActivePlayer] = React.useState<Player | undefined>(
     undefined
@@ -54,7 +57,11 @@ export const App = () => {
 
   const handleSubmit = React.useCallback(() => {
     if (activePlayer) {
-      submitPlayer(activePlayer)
+      setCardBouncing(true)
+      setTimeout(() => {
+        submitPlayer(activePlayer)
+        setCardBouncing(false)
+      }, 1000)
     }
   }, [activePlayer])
 
@@ -62,18 +69,18 @@ export const App = () => {
     <main>
       <Heading level={1}>Demo Card Viewer</Heading>
       <Grid columns={2}>
-        <DetailView player={activePlayer} />
+        <DetailView cardBouncing={cardBouncing} player={activePlayer} />
         <SettingsCard
           activePlayer={activePlayer}
-          loadingState={loadingState}
           handleClick={handleClick}
           handleSubmit={handleSubmit}
+          loadingState={loadingState}
         />
         <PlayerOverview
-          players={sortedPlayers}
-          loadingState={loadingState}
-          setActivePlayer={setActivePlayer}
           activePlayer={activePlayer}
+          loadingState={loadingState}
+          players={sortedPlayers}
+          setActivePlayer={setActivePlayer}
         />
       </Grid>
     </main>

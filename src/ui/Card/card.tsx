@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 
 interface CardProps {
+  bouncing?: boolean
   big?: boolean
   children?: React.ReactNode
   clickable?: boolean
@@ -10,6 +11,7 @@ interface CardProps {
 }
 
 export const Card = ({
+  bouncing,
   big,
   children,
   clickable,
@@ -25,7 +27,8 @@ export const Card = ({
           !highlighted &&
           'active:shadow-inner hover:mb-1 hover:-mt-1 active:mb-0 active:mt-0',
         highlighted ? 'shadow-inner hover:mb-0 hover:-mt-0' : 'shadow-cards',
-        big && 'min-h-[15rem]'
+        big && 'min-h-[15rem]',
+        bouncing && 'mb-2 -mt-2'
       )}
       data-cy={dataCy}
       onClick={clickable ? onClick : undefined}

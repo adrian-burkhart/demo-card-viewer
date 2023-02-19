@@ -1,18 +1,18 @@
 import { LoadingState, Player } from '../hooks'
-import { Button, Heading, Card, Text } from '../ui'
+import { Button, Heading, Card } from '../ui'
 
 interface SettingsCardProps {
   activePlayer: Player | undefined
-  loadingState: LoadingState
   handleClick: (method: 'asc' | 'desc') => void
   handleSubmit: () => void
+  loadingState: LoadingState
 }
 
 export const SettingsCard = ({
   activePlayer,
-  loadingState,
   handleClick,
   handleSubmit,
+  loadingState,
 }: SettingsCardProps) => {
   return (
     <aside className='flex flex-col'>
