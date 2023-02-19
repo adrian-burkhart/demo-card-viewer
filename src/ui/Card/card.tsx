@@ -24,7 +24,7 @@ export const Card = ({
         clickable &&
           !highlighted &&
           'active:shadow-inner hover:mb-1 hover:-mt-1 active:mb-0 active:mt-0',
-        highlighted ? 'shadow-inner hover:mb-0 hover:-mt-0' : 'shadow-test',
+        highlighted ? 'shadow-inner hover:mb-0 hover:-mt-0' : 'shadow-cards',
         big && 'min-h-[15rem]'
       )}
       data-cy={dataCy}

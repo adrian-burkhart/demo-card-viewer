@@ -14,7 +14,8 @@ module.exports = {
         active: '#123060',
       },
       boxShadow: {
-        test: '0 4px 0 rgb(255 255 255 / 0.46), 0 15px 35px rgb(216, 225, 233, 0.8)',
+        cards:
+          '0 4px 0 rgb(255 255 255 / 0.46), 0 15px 35px rgb(216, 225, 233, 0.8)',
         button: '0 3px #0f284f',
       },
     },
