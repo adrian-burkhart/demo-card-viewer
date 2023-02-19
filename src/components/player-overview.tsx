@@ -16,6 +16,10 @@ export const PlayerOverview = ({
   setActivePlayer,
 }: PlayerOverviewProps) => {
   const handleClick = (player: Player) => {
+    if (activePlayer === player) {
+      setActivePlayer(undefined)
+      return
+    }
     setActivePlayer(player)
   }
 
