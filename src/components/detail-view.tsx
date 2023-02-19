@@ -10,7 +10,7 @@ export const DetailView = ({ player }: DetailViewProps) => {
     <section className='flex flex-col'>
       <Heading level={2}>Details</Heading>
       {player ? (
-        <Card big>
+        <Card big dataCy={'detail-view'}>
           <Text color={'text-primary'}>
             {player.firstNames.includes(' ') ? 'First Names: ' : 'First Name: '}
             {player.firstNames}

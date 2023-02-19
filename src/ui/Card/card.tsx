@@ -4,6 +4,7 @@ interface CardProps {
   big?: boolean
   children?: React.ReactNode
   clickable?: boolean
+  dataCy?: string
   highlighted?: boolean
   onClick?: () => void
 }
@@ -12,9 +13,11 @@ export const Card = ({
   big,
   children,
   clickable,
+  dataCy,
   highlighted,
   onClick,
 }: CardProps) => {
+  console.log(dataCy)
   return (
     <div
       className={classNames(
@@ -25,6 +28,7 @@ export const Card = ({
         highlighted ? 'shadow-inner hover:mb-0 hover:-mt-0' : 'shadow-test',
         big && 'min-h-[15rem]'
       )}
+      data-cy={dataCy}
       onClick={clickable ? onClick : undefined}
     >
       {children}

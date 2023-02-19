@@ -36,6 +36,7 @@ export const PlayerOverview = ({
         {players.map((player, idX) => (
           <Card
             clickable
+            dataCy={`player-overview-card`}
             highlighted={activePlayer === player}
             key={idX}
             onClick={() => handleClick(player)}
