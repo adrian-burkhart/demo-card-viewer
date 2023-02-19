@@ -17,7 +17,6 @@ export const Card = ({
   highlighted,
   onClick,
 }: CardProps) => {
-  console.log(dataCy)
   return (
     <div
       className={classNames(
