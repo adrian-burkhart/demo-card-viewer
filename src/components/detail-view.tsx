@@ -13,8 +13,8 @@ export const DetailView = ({ cardBouncing, player }: DetailViewProps) => {
       {player ? (
         <Card big dataCy={'detail-view'} bouncing={cardBouncing} role='article'>
           <Text color={'text-primary'}>
-            👤 Real Name: {player.firstNames}
-            {player.lastName} {cardBouncing && '✔'}
+            👤 Real Name: {player.firstNames} {player.lastName}{' '}
+            {cardBouncing && '✔'}
           </Text>
           <Text color={'text-primary'}>
             🧙 Player Name: {player.playerName} {cardBouncing && '✔'}

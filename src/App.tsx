@@ -43,6 +43,7 @@ export const App = () => {
     },
     [players]
   )
+
   const handleSubmit = React.useCallback(() => {
     if (activePlayer) {
       setCardBouncing(true)

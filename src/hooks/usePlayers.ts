@@ -54,11 +54,9 @@ export const usePlayers = () => {
       })
       .then(data => {
         const parsedData = z.array(PlayerSchema).parse(data)
-        return setTimeout(() => {
-          const formattedPlayers = formatPlayers(parsedData)
-          setPlayers(formattedPlayers)
-          setLoadingState('success')
-        }, 0) // Use this to simulate a slow network to test the loading state
+        const formattedPlayers = formatPlayers(parsedData)
+        setPlayers(formattedPlayers)
+        setLoadingState('success')
       })
       .catch(e => {
         setLoadingState('errored')
