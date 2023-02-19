@@ -1,6 +1,6 @@
 interface HeadingProps {
   children: React.ReactNode
-  level: 1 | 2 | 3 | 4 | 5 | 6
+  level: 1 | 2 | 3
 }
 
 export const Heading = ({ children, level }: HeadingProps) => {
@@ -19,7 +19,7 @@ export const Heading = ({ children, level }: HeadingProps) => {
       )
     default:
       return (
-        <h3 className='text-2xl font-bold font-sans text-primary text-left p-1'>
+        <h3 className='text-xl font-bold font-sans text-primary text-left p-1'>
           {children}
         </h3>
       )

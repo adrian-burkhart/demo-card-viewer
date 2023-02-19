@@ -9,6 +9,7 @@ interface GridProps {
 export const Grid = ({ children, columns, rows }: GridProps) => {
   return (
     <div
+      role='grid'
       className={classNames(
         'grid gap-6',
         columns === 2
