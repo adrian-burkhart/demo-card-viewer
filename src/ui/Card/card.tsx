@@ -8,6 +8,7 @@ interface CardProps {
   dataCy?: string
   highlighted?: boolean
   onClick?: () => void
+  role?: 'article' | 'button'
 }
 
 export const Card = ({
@@ -18,10 +19,11 @@ export const Card = ({
   dataCy,
   highlighted,
   onClick,
+  role,
 }: CardProps) => {
   return (
     <div
-      role='button'
+      role={role || 'article'}
       className={classNames(
         'bg-white py-3 px-1 h-[10rem] rounded-md transition-all duration-200 flex flex-col justify-center',
         clickable &&

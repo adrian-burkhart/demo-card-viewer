@@ -24,7 +24,7 @@ describe('Card', () => {
   it('should call onClick', () => {
     const onClick = vi.fn()
     render(
-      <Card clickable={true} onClick={onClick}>
+      <Card clickable={true} onClick={onClick} role={'button'}>
         Test Name
       </Card>
     )
@@ -38,7 +38,7 @@ describe('Card', () => {
   it('should not call onClick when not clickable', () => {
     const onClick = vi.fn()
     render(
-      <Card clickable={false} onClick={onClick}>
+      <Card clickable={false} onClick={onClick} role={'button'}>
         Test Name
       </Card>
     )

@@ -17,7 +17,7 @@ export const SettingsCard = ({
   return (
     <aside className='flex flex-col'>
       <Heading level={2}>Controls</Heading>
-      <Card big>
+      <Card big role='article'>
         <div className='grid grid-cols-2 gap-2 my-4 '>
           <div>
             <Button

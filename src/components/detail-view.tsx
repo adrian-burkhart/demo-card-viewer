@@ -11,7 +11,7 @@ export const DetailView = ({ cardBouncing, player }: DetailViewProps) => {
     <section className='flex flex-col'>
       <Heading level={2}>Details</Heading>
       {player ? (
-        <Card big dataCy={'detail-view'} bouncing={cardBouncing}>
+        <Card big dataCy={'detail-view'} bouncing={cardBouncing} role='article'>
           <Text color={'text-primary'}>
             👤 Real Name: {player.firstNames}
             {player.lastName} {cardBouncing && '✔'}

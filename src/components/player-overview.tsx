@@ -1,29 +1,19 @@
-import { Dispatch, SetStateAction } from 'react'
-
 import { LoadingState, Player } from '../hooks'
 import { Grid, Heading, Card, Text } from '../ui'
 
 interface PlayerOverviewProps {
   activePlayer: Player | undefined
+  handleCardClick: (player: Player) => void
   loadingState: LoadingState
   players: Player[]
-  setActivePlayer: Dispatch<SetStateAction<Player | undefined>>
 }
 
 export const PlayerOverview = ({
   activePlayer,
+  handleCardClick,
   loadingState,
   players,
-  setActivePlayer,
 }: PlayerOverviewProps) => {
-  const handleClick = (player: Player) => {
-    if (activePlayer === player) {
-      setActivePlayer(undefined)
-      return
-    }
-    setActivePlayer(player)
-  }
-
   return (
     <section className='flex flex-col col-span-2'>
       <Heading level={2}>Overview</Heading>
@@ -44,7 +34,8 @@ export const PlayerOverview = ({
             dataCy={`player-overview-card`}
             highlighted={activePlayer === player}
             key={idX}
-            onClick={() => handleClick(player)}
+            onClick={() => handleCardClick(player)}
+            role='button'
           >
             <Text
               truncate

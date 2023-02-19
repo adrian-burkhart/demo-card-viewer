@@ -20,17 +20,6 @@ export const App = () => {
     'asc' | 'desc' | 'unsorted'
   >('unsorted')
 
-  const handleClick = React.useCallback(
-    (method: 'asc' | 'desc') => {
-      if (method === sortMethod) {
-        setSortMethod('unsorted')
-      } else {
-        setSortMethod(method)
-      }
-    },
-    [sortMethod]
-  )
-
   React.useEffect(() => {
     if (sortMethod === 'asc') {
       sortPlayers('asc')
@@ -54,16 +43,34 @@ export const App = () => {
     },
     [players]
   )
-
   const handleSubmit = React.useCallback(() => {
     if (activePlayer) {
       setCardBouncing(true)
       setTimeout(() => {
         submitPlayer(activePlayer)
         setCardBouncing(false)
-      }, 1000)
+      }, 500)
     }
   }, [activePlayer])
+
+  const handleClick = React.useCallback(
+    (method: 'asc' | 'desc') => {
+      if (method === sortMethod) {
+        setSortMethod('unsorted')
+      } else {
+        setSortMethod(method)
+      }
+    },
+    [sortMethod]
+  )
+
+  const handleCardClick = (player: Player) => {
+    if (activePlayer === player) {
+      setActivePlayer(undefined)
+      return
+    }
+    setActivePlayer(player)
+  }
 
   return (
     <main>
@@ -78,9 +85,9 @@ export const App = () => {
         />
         <PlayerOverview
           activePlayer={activePlayer}
+          handleCardClick={handleCardClick}
           loadingState={loadingState}
           players={sortedPlayers}
-          setActivePlayer={setActivePlayer}
         />
       </Grid>
     </main>
