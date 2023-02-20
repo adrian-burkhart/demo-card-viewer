@@ -26,7 +26,7 @@ Or for e2e testing, use
 
 I decided to use Vite because it provides a way to quickly set up an app and a framework like Next.js would have been overkill for a small app like this.
 
-I fetch the players from the API and format their real names by splitting them up into first and last names. This allows me to sort players by last names instead of first names.
+I fetch the players from the API and format their real names by splitting them up into first and last names. This allows me to sort players by last names instead of first names. I use zod to check the types at runtime.
 
 I added a shadow and animations for hover and active pseudoclasses to make it clear to the user, that the player cards can be clicked. I also added a small animation to the detail view when the submit button is clicked.
 
